@@ -14,54 +14,45 @@ module.exports = function (app) {
     app.post("/api/friends", function (req, res) {
         console.log(req.body);
 
-        var bestMatch = {
-            name: "",
-            image: "",
-            matchDifference: 1000
+        var newFriend = {
+            name: req.body.name,
+            image: req.body.photo,
+            scores: []
         };
-        var usrData = req.body;
-        var usrName = usrData.name;
-        var usrImage = usrData.image;
-        var usrScores = usrData.scores;
+        var scoresArray = [];
+        for (var i = 0; i < req.body.scores.length; i++){
+            scoresArray.push(parseInt(req.body.scores[i]))
+        }
 
-        var totalDifference = 0;
+        newFriend.scores = scoresArray;
 
-        // for (var i = 0; i < friendsData.scores - 1; i++) {
-        //     console.log(friendsData[i].name);
-            
+        var scoreComparisonArray = [];
+
+        for (var i = 0; i <friendsData.length; i++){
+            var currentComparison = 0;
+            for (var j = 0; j <newFriend.scores.length; j++){
+                currentComparison += Math.abs(newFriend.scores[j] - friendsData[i].scores[j]);
+            }
+            scoreComparisonArray.push(currentComparison);
+        }
+
+        var newFriendPosition = 0
+
+        for (var i = 1; i<scoreComparisonArray.length; i++) {
+            if(scoreComparisonArray[i] <= scoreComparisonArray[newFriendPosition]){
+                newFriendPosition = i;
+            }
+        }
+
+        var bestFriendMatch = friendsData[newFriendPosition];
 
 
-        //     for (var j = 0; j < 10; j++) {
-        //         totalDifference += Math.abs(parseInt(usrScores[j]) - parseInt(friendsData[i].scores[j]));
-        //         console.log(totalDifference);
-        //         console.log('cat');
-                // if (totalDifference <= bestMatch.matchDifference) {
-                //     bestMatch.name = friendsData[i].name;
-                //     bestMatch.photo = friendsData[i].photo;
-                //     bestMatch.matchDifference = totalDifference;
-                // }
-        //     }
-        // }
+        
+        // console.log(newFriend);
+        res.json(bestFriendMatch);
 
-
-
-        friendsData.push(req.body);
-        // console.log(bestMatch);
-        res.json(bestMatch);
+        friendsData.push(newFriend);
         // console.log(req.body);
-
-        // friendsData.forEach(function(value, index){
-        //         for (var i = 0; i < value.scores.length; i++){
-        //            var addedScores;
-        //            addedScores += value.scores[i];
-        //            console.log(addedScores);
-        //         };
-
-
-
-        // });
-
-
     });
 
 };
