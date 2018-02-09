@@ -3,12 +3,12 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>FriendFinder</title>
+  <title>Hipster FriendFinder!</title>
 
   <!-- Latest compiled and minified CSS & JS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <script src="https://code.jquery.com/jquery.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
   <!-- Font Awesome Glyphicons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
@@ -16,14 +16,39 @@
 </head>
 
 <body>
-
+    <nav class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand" href="/">Hipster Friend Finder</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/survey">Survey</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/api/friends">List of Friends</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="http://github.com/seandillon1224/friendFinder">Github Repo</a>
+                </li>
+          </ul>
+        </div>
+      </nav>
+  
+      <br>
+      <br>
+      
   <div class="container">
 
     <div class="jumbotron">
-      <h1><i class="fa fa-facebook-square" aria-hidden="true"></i> Friend Finder</h1>
+      <h1><i class="fa fa-facebook-square" aria-hidden="true"></i> Hipster Friend Finder</h1>
       <hr>
       <h2>Answer a few basic questions. </h2>
-      <h2>Then find the friend with the greatest compatibility!</h2>
+      <h2>Then find the Hipster friend with the greatest compatibility!</h2>
       <br>
 
       <div>
@@ -32,11 +57,7 @@
 
     </div>
 
-    <footer class="footer">
-      <div class="container">
-        <p><a href="/api/friends">API Friends List</a> | <a href="#">GitHub Repo</a></p>
-      </div>
-    </footer>
+    
 
   </div>
 

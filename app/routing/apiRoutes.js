@@ -1,6 +1,5 @@
 var friendsData = require("../data/friends");
 var path = require('path');
-var totalDifference = 0;
 
 //routing
 
@@ -12,19 +11,18 @@ module.exports = function (app) {
 
 
     app.post("/api/friends", function (req, res) {
-        console.log(req.body);
 
         var newFriend = {
             name: req.body.name,
             image: req.body.photo,
             scores: []
         };
-        var scoresArray = [];
-        for (var i = 0; i < req.body.scores.length; i++){
-            scoresArray.push(parseInt(req.body.scores[i]))
+        for (var i = 0; i < req.body["scores[]"].length; i++){
+            newFriend.scores.push(parseInt(req.body["scores[]"][i]))
         }
 
-        newFriend.scores = scoresArray;
+        // newFriend.scores = scoresArray;
+        // console.log newFriend.scores
 
         var scoreComparisonArray = [];
 
@@ -46,13 +44,10 @@ module.exports = function (app) {
 
         var bestFriendMatch = friendsData[newFriendPosition];
 
-
-        
-        // console.log(newFriend);
         res.json(bestFriendMatch);
 
         friendsData.push(newFriend);
-        // console.log(req.body);
+     
     });
 
 };
